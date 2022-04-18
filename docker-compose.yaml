@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  react-app:
+    container_name: react-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+      - URL_DOMAIN=http://127.0.0.1:3000
+      - URL_DOMAIN_LOGIN=http://127.0.0.1:3001
+    image: iexpert/react-app:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - json-server
+      - openapi-server
+  
+  json-server:
+    container_name: json-server
+    build: ./json-server
+    image: iexpert/json-server:latest
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - db:/usr/src/app/api/
+  
+  openapi-server:
+      container_name: openapi-server
+      build: ./openapi-server
+      image: iexpert/openapi-server:latest
+      restart: unless-stopped
+      ports:
+        - 3001:3001
+      
+volumes:
+  db:
