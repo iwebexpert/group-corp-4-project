@@ -27,12 +27,12 @@ services:
       - db:/usr/src/app/api/
   
   openapi-server:
-      container_name: openapi-server
-      build: ./openapi-server
-      image: iexpert/openapi-server:latest
-      restart: unless-stopped
-      ports:
-        - 3001:3001
+    container_name: openapi-server
+    build: ./openapi-server
+    image: iexpert/openapi-server:latest
+    restart: unless-stopped
+    ports:
+      - 3001:3001
       
 volumes:
   db:
