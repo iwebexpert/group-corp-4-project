@@ -28,7 +28,7 @@ export const requestOptions = (method = 'GET', body: ObjectLiteral | null = null
   headers.append('Content-Type', 'application/json')
 
   if(isAddToken){
-    headers.append('Authentication', `Bearer ${authService.token}`)
+    headers.append('Authorization', `Bearer ${authService.token}`)
   }
 
   if(isDev()){
