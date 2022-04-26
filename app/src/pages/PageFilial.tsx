@@ -50,6 +50,10 @@ export default function PageFilial() {
     window.open(urls.filialReportDownloadLink(id, 'pdf'))
   }
 
+  const downloadHtml = (id: string) => () => {
+    window.open(urls.filialReportDownloadLink(id, 'html5'))
+  }
+
   const CustomExportButton = (props: ButtonProps) => (
     <GridToolbarExportContainer {...props}>
       <GridCsvExportMenuItem options={{ delimiter: ';' }} />
@@ -132,12 +136,9 @@ export default function PageFilial() {
           onClick={downloadPdf(params.id)}
         />,
         <GridActionsCellItem
-          icon={
-            <Link to={urls.filialReportDownloadLink(params.id, 'html5')} target="_blank">
-              <HtmlIcon />
-            </Link>
-          }
+          icon={<HtmlIcon />}
           label="Скачать отчет в HTML"
+          onClick={downloadHtml(params.id)}
         />,
       ],
     },
