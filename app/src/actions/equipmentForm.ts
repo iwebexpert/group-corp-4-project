@@ -15,7 +15,7 @@ export type EquipmentFormRejectPayload = {
 export const equipmentFormApprove = createAction(
   'EQUIPMENT_FORM_APPROVE',
   (id: string, date: string) => {
-    const options = requestOptions('PATCH', {
+    const options = requestOptions('POST', {
       status: EquipmentStatus.STATUS_APPROVED,
       approval_date: date,
     })
@@ -37,7 +37,7 @@ export const equipmentFormApprove = createAction(
 export const equipmentFormReject = createAction<EquipmentFormRejectPayload, string, string>(
   'EQUIPMENT_FORM_REJECT',
   (id, reason) => {
-    const options = requestOptions('PATCH', {
+    const options = requestOptions('POST', {
       status: EquipmentStatus.STATUS_REJECTED,
       rejection_reason: reason,
     })

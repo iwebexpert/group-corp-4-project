@@ -145,7 +145,7 @@ export const equipmentFormEditStart: ActionCreator<EquipmentFormEditStartAction>
 })
 
 export const equipmentFormEditSave: ActionCreator<EquipmentFormEditSaveAction> = (data) => {
-  fetch(urls.equipmentForm(data.id), requestOptions('PATCH', data))
+  fetch(urls.equipmentForm(data.id), requestOptions('PUT', data))
     .then((result) => result.json())
     .then((result) => {
       if (result.error) {

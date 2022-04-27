@@ -14,6 +14,8 @@ import {
   GridToolbarContainerProps,
   GridValueFormatterParams,
 } from '@mui/x-data-grid'
+import { authService } from '../services/auth/authService'
+
 import { filialFetch } from 'actions/filial'
 
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
@@ -25,6 +27,7 @@ import { getAllFieldsDescription } from 'components/FilialReportForm/schema'
 import { urls } from 'helpers/requestHelper'
 import { AppState } from 'reducers/index'
 import { ButtonProps } from '@mui/material'
+import { downloadFile } from 'helpers/fileDownloadHelper'
 
 
 type FilialDataGridColumn = {
@@ -47,11 +50,11 @@ export default function PageFilial() {
   const rows = filial
 
   const downloadPdf = (id: string) => () => {
-    window.open(urls.filialReportDownloadLink(id, 'pdf'))
+    downloadFile(urls.filialReportDownloadLink(id, 'pdf'), authService.token, 'pdf')
   }
 
   const downloadHtml = (id: string) => () => {
-    window.open(urls.filialReportDownloadLink(id, 'html5'))
+    downloadFile(urls.filialReportDownloadLink(id, 'html5'), authService.token, 'html')
   }
 
   const CustomExportButton = (props: ButtonProps) => (
@@ -122,7 +125,6 @@ export default function PageFilial() {
       minWidth: 100,
       // flex: 1,
     },
-    ...getReportColumns(),
     {
       field: 'actions',
       type: 'actions',
@@ -142,6 +144,7 @@ export default function PageFilial() {
         />,
       ],
     },
+    ...getReportColumns(),
   ]
 
   return (

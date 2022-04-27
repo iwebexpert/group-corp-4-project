@@ -9,7 +9,7 @@ export const urls = {
   equipment: () => `${URL_DOMAIN}${URL_PREFIX}/equipment`,
   equipmentForm: (id: string) => `${URL_DOMAIN}${URL_PREFIX}/equipment/${id}`,
   filalReport: () => `${URL_DOMAIN}${URL_PREFIX}/reports`,
-  filialReportDownloadLink: (id: string, format: 'html5' | 'pdf') => `${URL_DOMAIN}${URL_PREFIX}/filial/download/${id}?format=${format}`,
+  filialReportDownloadLink: (id: string, format: 'html5' | 'pdf') => `${URL_DOMAIN}${URL_PREFIX}/reports/download/${id}?format=${format}`,
   authLogin: () => `${URL_DOMAIN_LOGIN}${URL_PREFIX}/user/login`,
 }
 
