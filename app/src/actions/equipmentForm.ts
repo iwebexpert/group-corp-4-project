@@ -20,7 +20,7 @@ export const equipmentFormApprove = createAction(
       approval_date: date,
     })
 
-    fetch(urls.equipmentForm(id), options)
+    fetch(`${urls.equipmentForm(id)}/approve`, options)
       .then((result) => result.json())
       .then((result) => {
         if (result.error) {
@@ -42,7 +42,7 @@ export const equipmentFormReject = createAction<EquipmentFormRejectPayload, stri
       rejection_reason: reason,
     })
 
-    fetch(urls.equipmentForm(id), options)
+    fetch(`${urls.equipmentForm(id)}/reject`, options)
       .then((result) => result.json())
       .then((result) => {
         if (result.error) {
